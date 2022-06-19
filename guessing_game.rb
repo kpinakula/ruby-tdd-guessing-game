@@ -14,10 +14,20 @@ class GuessingGame
         end
     end
 
-    def start()
+    def start
         puts create_message(:welcome)
         guess = gets.chomp
+        check_guess(guess)
+    end
 
+    private 
+
+    # recursive example:
+    # gets.chomp == secret_word ?
+    # create_message(:congrats) :
+    # (puts create_message(:try_again); check_guess())
+
+    def check_guess(guess)
         while guess != secret_word()
             puts create_message(:try_again)
             guess = gets.chomp
