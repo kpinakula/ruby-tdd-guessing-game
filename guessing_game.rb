@@ -18,3 +18,6 @@ class GuessingGame
         "Astonishing!"
     end
 end
+
+# game_instance = GuessingGame.new
+# puts game_instance.start
