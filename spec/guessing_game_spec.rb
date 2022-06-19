@@ -10,7 +10,7 @@ describe 'guessing game' do
             allow(game).to receive(:gets).and_return(secret_word)
             expect { game.start }.to output(/^Guess the secret word:/).to_stdout
         end
-        it 'prompts the user to enter a guess and returns true if it matches secret word' do
+        it 'returns "Astonishing!" if guess matches secret word' do
             allow(game).to receive(:gets).and_return(secret_word)
             expect(game.start).to eq "Astonishing!"
         end
