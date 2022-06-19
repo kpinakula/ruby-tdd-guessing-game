@@ -3,17 +3,17 @@ class GuessingGame
         "abracadabra"
     end
 
-    def guess
+    def prompt_guess
         gets.chomp
     end
 
     def start()
         puts "Guess the secret word:"
-        guess = guess()
-        if guess == secret_word
-            "Astonishing!"
-        else
-            false
+        guess = prompt_guess()
+
+        while guess != secret_word()
+            guess = prompt_guess()
         end
+        "Astonishing!"
     end
 end

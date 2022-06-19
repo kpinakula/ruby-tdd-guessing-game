@@ -14,9 +14,16 @@ describe 'guessing game' do
             allow(game).to receive(:gets).and_return(secret_word)
             expect(game.start).to eq "Astonishing!"
         end
-        it 'prompts the user to enter a guess and returns false if it does not match secret word' do
-            allow(game).to receive(:gets).and_return(incorrect_guess)
-            expect(game.start).to eq false
+
+        describe 'allows multiple guesses and' do
+            it 'returns "Astonishing!" after simulated input: incorrect guess > correct guess' do
+                allow(game).to receive(:gets).and_return(incorrect_guess, secret_word)
+                expect(game.start).to eq "Astonishing!"
+        end
+            it 'returns "Astonishing!" after simulated input: incorrect guess (x 4) > correct guess' do
+                allow(game).to receive(:gets).and_return(incorrect_guess, incorrect_guess, incorrect_guess, incorrect_guess, secret_word)
+                expect(game.start).to eq "Astonishing!"
+        end
         end
     end
 end
