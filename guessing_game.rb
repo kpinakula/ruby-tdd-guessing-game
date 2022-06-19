@@ -8,10 +8,10 @@ class GuessingGame
     end
 
     def start()
-        puts "guess the secret word"
+        puts "Guess the secret word:"
         guess = guess()
         if guess == secret_word
-            true
+            "Astonishing!"
         else
             false
         end
