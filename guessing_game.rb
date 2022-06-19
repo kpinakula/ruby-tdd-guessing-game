@@ -3,19 +3,26 @@ class GuessingGame
         "abracadabra"
     end
 
-    def prompt_guess
-        gets.chomp
+    def create_message(type)
+        case type
+            when :welcome
+                "Guess the secret word:"
+            when :try_again
+                "Tough luck! Guess again:"
+            when :congrats
+                "Astonishing!"
+        end
     end
 
     def start()
-        puts "Guess the secret word:"
-        guess = prompt_guess()
+        puts create_message(:welcome)
+        guess = gets.chomp
 
         while guess != secret_word()
-            puts "Guess again:"
-            guess = prompt_guess()
+            puts create_message(:try_again)
+            guess = gets.chomp
         end
-        "Astonishing!"
+        create_message(:congrats)
     end
 end
 
