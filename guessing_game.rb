@@ -12,6 +12,7 @@ class GuessingGame
         guess = prompt_guess()
 
         while guess != secret_word()
+            puts "Guess again:"
             guess = prompt_guess()
         end
         "Astonishing!"

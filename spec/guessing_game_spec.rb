@@ -19,11 +19,19 @@ describe 'guessing game' do
             it 'returns "Astonishing!" after simulated input: incorrect guess > correct guess' do
                 allow(game).to receive(:gets).and_return(incorrect_guess, secret_word)
                 expect(game.start).to eq "Astonishing!"
-        end
+            end
             it 'returns "Astonishing!" after simulated input: incorrect guess (x 4) > correct guess' do
                 allow(game).to receive(:gets).and_return(incorrect_guess, incorrect_guess, incorrect_guess, incorrect_guess, secret_word)
                 expect(game.start).to eq "Astonishing!"
-        end
+            end
+            it 'outputs "Guess again:" onne time if first guess does not match secret word' do
+                allow(game).to receive(:gets).and_return(incorrect_guess, secret_word)
+                expect { game.start }.to output(/^Guess the secret word:\nGuess again:\n$/).to_stdout
+            end
+            it 'outputs "Guess again:" twice if first two guesses do not match secret word' do
+                allow(game).to receive(:gets).and_return(incorrect_guess, incorrect_guess, secret_word)
+                expect { game.start }.to output(/^Guess the secret word:\nGuess again:\nGuess again:\n$/).to_stdout
+            end
         end
     end
 end
